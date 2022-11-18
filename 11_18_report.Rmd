@@ -228,4 +228,261 @@ tab1(ds3$V2293, cum.percent = TRUE)
 ```
 
 
+## Arrest Variable
+
+### 25880:ARRSTD&TKN 2 POL
+
+During the LAST 12 MONTHS, how often have you . . . been arrested and taken to a police station?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2508, cum.percent = TRUE)
+
+```
+
+## Substance Use Variable
+
+### 00760:EVR SMK CIG,REGL
+
+Have you ever smoked cigarettes?
+
+1="Never" 2="Once or twice" 3="Occasionally but not regularly" 4="Regularly in the past" 5="Regularly now"
+
+```{r}
+tab1(core$V2101, cum.percent = TRUE)
+tab1(core$V2101D, cum.percent = TRUE)
+tab1(ds2$V1208, cum.percent = TRUE)
+tab1(ds4$V3101, cum.percent = TRUE)
+tab1(ds5$V4101, cum.percent = TRUE)
+tab1(ds6$V5101, cum.percent = TRUE)
+tab1(ds7$V6101, cum.percent = TRUE)
+```
+
+### 00820:#X DRNK/LAST12MO
+
+On how many occasions (if any) have you had alcoholic beverages to drink--more than just a few sips . . . during the last 12 months?
+
+1="0 Occasions"  2="1-2 Occasions"   3="3-5 Occasions"  4="6-9 Occasions"  5="10-19 Occasions"  6="20-39 Occasions"  7="40 or More"
+
+```{r}
+tab1(core$V2105, cum.percent = TRUE)
+tab1(core$V2105D, cum.percent = TRUE)
+tab1(ds2$V1215, cum.percent = TRUE)
+tab1(ds3$V2105, cum.percent = TRUE)
+tab1(ds4$V3105, cum.percent = TRUE)
+tab1(ds5$V4105, cum.percent = TRUE)
+tab1(ds6$V5105, cum.percent = TRUE)
+tab1(ds7$V6105, cum.percent = TRUE)
+```
+
+### 00860:#XMJ+HS/LAST12MO
+
+On how many occasions (if any) have you used marijuana (grass, pot) or hashish (hash, hash oil) . . . during the last 12 months?
+
+[For form 1, item is recoded from separate marijuana and hashish questions, and "Dope" is given as another example of what marijuana is called.]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2216, cum.percent = TRUE)
+tab1(core$V2216D, cum.percent = TRUE)
+tab1(ds2$V1116, cum.percent = TRUE)
+tab1(ds3$V2116, cum.percent = TRUE)
+tab1(ds4$V3116, cum.percent = TRUE)
+tab1(ds5$V4116, cum.percent = TRUE)
+tab1(ds6$V5116, cum.percent = TRUE)
+tab1(ds7$V6116, cum.percent = TRUE)
+```
+
+### 00900:#X LSD/LAST 12MO
+
+On how many occasions (if any) have you used LSD ("acid") . . . during the last 12 months?
+
+[Worded slightly differently in form 1; see form 1 codebook.]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2219, cum.percent = TRUE)
+tab1(core$V2219D, cum.percent = TRUE)
+tab1(ds2$V1285, cum.percent = TRUE)
+tab1(ds3$V2119, cum.percent = TRUE)
+tab1(ds4$V3119, cum.percent = TRUE)
+tab1(ds5$V4119, cum.percent = TRUE)
+tab1(ds6$V5119, cum.percent = TRUE)
+```
+
+### 00960:#X COKE/LAST12MO
+
+On how many occasions (if any) have you taken cocaine (sometimes called "coke", "crack", "rock") . . . during last 12 months?
+
+[For questionnaire forms 1, 3, 4, and 6, item is recoded from separate questions about "crack" (items 22260-22280) and other forms of cocaine (items 22320-22340).]
+
+```{r}
+tab1(core$V2125, cum.percent = TRUE)
+tab1(ds2$V1125, cum.percent = TRUE)
+tab1(ds3$V2125, cum.percent = TRUE)
+tab1(ds4$V3125, cum.percent = TRUE)
+tab1(ds5$V4125, cum.percent = TRUE)
+tab1(ds6$V5125, cum.percent = TRUE)
+tab1(ds7$V6125, cum.percent = TRUE)
+```
+
+### 00990:#X AMPH/LAST12MO
+
+{Amphetamines are sometimes prescribed by doctors for people who have trouble paying attention, are hyperactive, have ADHD, or have trouble staying awake. They are sometimes called uppers, ups, pep pills, and include drugs like Adderall and Ritalin. Drugstores are not supposed to sell them without a prescription from a doctor. Amphetamines
+
+do NOT include any nonprescription drugs, such as over-the-counter diet pills or stay-awake pills.
+
+[Questionnaire form 1 worded somewhat differently and also includes as examples: Benzedrine, Dexedrine, Methedrine, Ritalin, Adderall, Concerta, Methamphetamine, Meth or Crystal Meth (see form 1 codebook).]}
+
+[All forms]: On how many occasions (if any) have you taken amphetamines on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2128, cum.percent = TRUE)
+tab1(core$V2128D, cum.percent = TRUE)
+tab1(ds2$V1130, cum.percent = TRUE)
+tab1(ds3$V2128, cum.percent = TRUE)
+tab1(ds4$V3128, cum.percent = TRUE)
+tab1(ds5$V4128, cum.percent = TRUE)
+tab1(ds6$V5128, cum.percent = TRUE)
+tab1(ds7$V6128, cum.percent = TRUE)
+```
+
+### 01050:#X SED/BARB/LAST12MO
+
+{Sedatives, including barbiturates, are sometimes prescribed by doctors to help people relax or get to sleep. They are sometimes called downs or downers, and include phenobarbital, Tuinal, Nembutal, and Seconal.} On how many occasions (if any) have you taken sedatives on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+[Worded slightly differently in questionnaire form 1, and replaced Nembutal with Ambien, Lunesta, and Sonata as examples; see form 1 codebook.]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2134, cum.percent = TRUE)
+tab1(core$V2134D, cum.percent = TRUE)
+tab1(ds2$V1384, cum.percent = TRUE)
+tab1(ds3$V2134, cum.percent = TRUE)
+tab1(ds4$V3134, cum.percent = TRUE)
+tab1(ds5$V4134, cum.percent = TRUE)
+tab1(ds6$V5134, cum.percent = TRUE)
+tab1(ds7$V6134, cum.percent = TRUE)
+```
+
+### 01080:#X TRQL/LAST12MO
+
+{Tranquilizers are sometimes prescribed by doctors to calm people down, quiet their nerves, or relax their muscles. Librium, Valium, and Xanax are all tranquilizers.} On how many occasions (if any) have you taken tranquilizers on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+[Questionnaire form 1 worded somewhat differently and adds Soma, Serax, Ativan, Klonopin to the examples (see form 1 codebook).]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2137, cum.percent = TRUE)
+tab1(core$V2137D, cum.percent = TRUE)
+tab1(ds2$V1431, cum.percent = TRUE)
+tab1(ds3$V2137, cum.percent = TRUE)
+tab1(ds4$V3137, cum.percent = TRUE)
+tab1(ds5$V4137, cum.percent = TRUE)
+tab1(ds6$V5137, cum.percent = TRUE)
+tab1(ds7$V6137, cum.percent = TRUE)
+```
+
+### 01110:#X 'H'/LAST 12MO
+
+On how many occasions (if any) have you taken heroin . . . during the last 12 months?
+
+[For questionnaire forms 2, 5, and 6, item is recoded from separate questions about heroin use with a needle (items 29630-29650) and without a needle (items 29660-29680).]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2140, cum.percent = TRUE)
+tab1(ds2$V1522, cum.percent = TRUE)
+tab1(ds3$V2140, cum.percent = TRUE)
+tab1(ds4$V3140, cum.percent = TRUE)
+tab1(ds5$V4140, cum.percent = TRUE)
+tab1(ds6$V5140, cum.percent = TRUE)
+tab1(ds7$V6140, cum.percent = TRUE)
+```
+
+### 01140:#X NARC/LAST12MO
+
+{There are a number of narcotics other than heroin, such as methadone, opium, morphine, codeine, Demerol, Vicodin, OxyContin, and Percocet. These are sometimes prescribed by doctors.} On how many occasions (if any) have you taken narcotics other than heroin on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+[Questionnaire form 1 worded somewhat differently and adds "Percodan, Ultram" (see form 1 Codebook).]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+
+```{r}
+tab1(core$V2143, cum.percent = TRUE)
+tab1(core$V2143D, cum.percent = TRUE)
+tab1(ds2$V1566, cum.percent = TRUE)
+tab1(ds3$V2143, cum.percent = TRUE)
+tab1(ds4$V3143, cum.percent = TRUE)
+tab1(ds5$V4143, cum.percent = TRUE)
+tab1(ds6$V5143, cum.percent = TRUE)
+tab1(ds7$V6143, cum.percent = TRUE)
+```
+
+### 00170:#X INHL/LAST12MO
+On how many occasions (if any) have you sniffed glue, or breathed the contents of aerosol spray cans, or inhaled any other gases or sprays in order to get high . . . during the last 12 months?
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2146, cum.percent = TRUE)
+tab1(core$V2146D, cum.percent = TRUE)
+tab1(ds3$V2146, cum.percent = TRUE)
+tab1(ds4$V3146, cum.percent = TRUE)
+tab1(ds6$V5146, cum.percent = TRUE)
+```
+
+### 22700:#X STRD/LAST12MO
+
+{Anabolic steroids are prescription drugs sometimes prescribed by doctors to treat certain conditions. Some athletes, and others, have used them to try to increase muscle development.} On how many occasions (if any) have you taken steroids on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(core$V2494, cum.percent = TRUE)
+tab1(ds6$V5528, cum.percent = TRUE)
+tab1(ds7$V6393, cum.percent = TRUE)
+```
+
+### 35150:#DAYS VAPE NIC/12MO
+
+On how many DAYS (if any) have you vaped NICOTINE . . . during the last 12 months?
+
+1="0 Days" 2="1-2 Days" 3="3-5 Days" 4="6-9 Days" 5="10-19 Days" 6="20 or More"
+
+```{r}
+tab1(core$V2581, cum.percent = TRUE)
+tab1(ds2$V1978, cum.percent = TRUE)
+tab1(ds3$V2581, cum.percent = TRUE)
+tab1(ds5$V4472, cum.percent = TRUE)
+tab1(ds7$V6642, cum.percent = TRUE)
+```
+
+### V2584: 35180:#DAYS VAPE MJ/12MO
+
+On how many DAYS (if any) have you vaped MARIJUANA . . . during the last 12 months?
+
+1="0 Days" 2="1-2 Days" 3="3-5 Days" 4="6-9 Days" 5="10-19 Days
+
+```{r}
+tab1(core$V2584, cum.percent = TRUE)
+tab1(ds2$V1981, cum.percent = TRUE)
+tab1(ds3$V2584, cum.percent = TRUE)
+tab1(ds5$V4475, cum.percent = TRUE)
+tab1(ds7$V6645, cum.percent = TRUE)
+```
+
+
+
+
+
 
