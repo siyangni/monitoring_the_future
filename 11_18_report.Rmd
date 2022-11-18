@@ -304,8 +304,8 @@ On how many occasions (if any) have you used LSD ("acid") . . . during the last 
 1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
 
 ```{r}
-tab1(core$V2219, cum.percent = TRUE)
-tab1(core$V2219D, cum.percent = TRUE)
+tab1(core$V2119, cum.percent = TRUE)
+tab1(core$V2119D, cum.percent = TRUE)
 tab1(ds2$V1285, cum.percent = TRUE)
 tab1(ds3$V2119, cum.percent = TRUE)
 tab1(ds4$V3119, cum.percent = TRUE)
