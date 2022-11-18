@@ -450,7 +450,7 @@ tab1(ds6$V5146, cum.percent = TRUE)
 ```{r}
 tab1(core$V2494, cum.percent = TRUE)
 tab1(ds6$V5528, cum.percent = TRUE)
-tab1(ds7$V6393, cum.percent = TRUE)
+tab1(ds7$V6369, cum.percent = TRUE)
 ```
 
 ### 35150:#DAYS VAPE NIC/12MO
