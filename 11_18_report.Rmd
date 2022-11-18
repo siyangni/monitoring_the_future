@@ -344,7 +344,7 @@ do NOT include any nonprescription drugs, such as over-the-counter diet pills or
 ```{r}
 tab1(core$V2128, cum.percent = TRUE)
 tab1(core$V2128D, cum.percent = TRUE)
-tab1(ds2$V1130, cum.percent = TRUE)
+tab1(ds2$V1330, cum.percent = TRUE)
 tab1(ds3$V2128, cum.percent = TRUE)
 tab1(ds4$V3128, cum.percent = TRUE)
 tab1(ds5$V4128, cum.percent = TRUE)
