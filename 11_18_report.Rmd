@@ -1,0 +1,231 @@
+---
+title: "11_18_meeting_report"
+author: "Siyang Ni"
+date: "2022-11-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading datasets
+
+```{r}
+setwd("D:/research/Monitoring-The-Future/mtf_19_12")
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0001/37841-0001-Data.rda")
+core <- da37841.0001
+rm(da37841.0001)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0002/37841-0002-Data.rda")
+ds2 <- da37841.0002
+rm(da37841.0002)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0003/37841-0003-Data.rda")
+ds3 <- da37841.0003
+rm(da37841.0003)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0004/37841-0004-Data.rda")
+ds4 <- da37841.0004
+rm(da37841.0004)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0005/37841-0005-Data.rda")
+ds5 <- da37841.0005
+rm(da37841.0005)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0006/37841-0006-Data.rda")
+ds6 <- da37841.0006
+rm(da37841.0006)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0007/37841-0007-Data.rda")
+ds7 <- da37841.0007
+rm(da37841.0007)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0008/37841-0008-Data.rda")
+ds8 <- da37841.0008
+rm(da37841.0008)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0009/37841-0009-Data.rda")
+ds9 <- da37841.0009
+rm(da37841.0009)
+
+```
+
+## Delinquency Variables
+
+Load relevant packages
+
+```{r}
+library(epiDisplay)
+```
+
+### 00650:#X/12MO R TCKTD
+
+Within the LAST 12 MONTHS, how many times, if any, have you received a ticket (OR been stopped and warned) for moving violations, such as speeding, running a stop light, or improper passing?
+
+0="None" 1="Once" 2="Twice" 3="Three times" 4="Four or more times"
+
+```{r}
+tab1(core$V2197, cum.percent = TRUE)
+tab1(ds2$V1197, cum.percent = TRUE)
+tab1(ds3$V2197, cum.percent = TRUE)
+tab1(ds4$V3197, cum.percent = TRUE)
+tab1(ds5$V4197, cum.percent = TRUE)
+tab1(ds6$V5197, cum.percent = TRUE)
+tab1(ds7$V6197, cum.percent = TRUE)
+```
+
+### 06520:FRQ FIGHT PARNTS
+
+how often have you . . . argued or had a fight with either of your parents?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+Data from the Western Region intentionally obliterated.
+
+```{r}
+tab1(ds3$V2279, cum.percent = TRUE)
+```
+
+### 06530:FRQ HIT SUPRVISR
+
+During the LAST 12 MONTHS, how often have you . . . hit an instructor or supervisor?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2280, cum.percent = TRUE)
+```
+
+### 06540:FRQ FGT WRK/SCHL
+
+During the LAST 12 MONTHS, how often have you . . . gotten into a serious fight in school or at work?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2281, cum.percent = TRUE)
+```
+
+### 06550:FRQ GANG FIGHT
+
+During the LAST 12 MONTHS, how often have you . . . taken part in a fight where a group of your friends were against another group?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2282, cum.percent = TRUE)
+```
+
+### 06560:FRQ HURT SM1 BAD
+
+During the LAST 12 MONTHS, how often have you . . . hurt someone badly enough to need bandages or a doctor?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2283, cum.percent = TRUE)
+```
+
+### 06570:FRQ THREAT WEAPN
+
+During the LAST 12 MONTHS, how often have you . . . used a knife or gun or some other thing (like a club) to get something from a person?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2284, cum.percent = TRUE)
+```
+
+### 06580:FRQ STEAL <$50
+
+During the LAST 12 MONTHS, how often have you . . . taken something not belonging to you worth under $50?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2285, cum.percent = TRUE)
+```
+
+### 06590:FRQ STEAL >$50
+
+During the LAST 12 MONTHS, how often have you . . . taken something not belonging to you worth over $50?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2286, cum.percent = TRUE)
+```
+
+### 06600:FRQ SHOPLIFT
+
+During the LAST 12 MONTHS, how often have you . . . taken something from a store without paying for it?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2287, cum.percent = TRUE)
+```
+
+### 06610:FRQ CAR THEFT
+
+During the LAST 12 MONTHS, how often have you . . . taken a car that didn't belong to someone in your family without permission of the owner?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2288, cum.percent = TRUE)
+```
+
+### 06620:FRQ STEAL CAR PT
+
+During the LAST 12 MONTHS, how often have you . . . taken part of a car without permission of the owner?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2289, cum.percent = TRUE)
+```
+
+### 06630:FRQ TRESPAS BLDG
+
+During the LAST 12 MONTHS, how often have you . . . gone into some house or building when you weren't supposed to be there?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2290, cum.percent = TRUE)
+```
+
+### 06640:FRQ ARSON
+
+During the LAST 12 MONTHS, how often have you . . . set fire to someone's property on purpose?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2291, cum.percent = TRUE)
+```
+
+### 06650:FRQ DMG SCH PPTY
+
+During the LAST 12 MONTHS, how often have you . . . damaged school property on purpose?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2292, cum.percent = TRUE)
+```
+
+### 06660:FRQ DMG WK PRPTY
+
+During the LAST 12 MONTHS, how often have you . . . damaged property at work on purpose?
+
+1="Not At All" 2="Once" 3="Twice" 4="3 or 4 Times" 5="5 or More Times"
+
+```{r}
+tab1(ds3$V2293, cum.percent = TRUE)
+```
+
+
+
