@@ -9,6 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Note
+
+For every variable, *Column %(NA-)* reports the frequency without any NAs. I also reported the cumulative frequency in column cum.%(NA-). 
+
+I also plotted the frequency for each variable, giving a more intuitive way of digesting the frequency information. All NAs are indicated by the "last" bar of the histogram, unless otherwise indicated. 
+
+
 ## Loading datasets
 
 ```{r}
@@ -482,6 +489,54 @@ tab1(ds7$V6645, cum.percent = TRUE)
 ```
 
 
+# Composite Variable Report
+
+### C0000: Property-related Delinquency
+
+Because all original variables were coded as categorical, and they are all heavily right-skewed, I create the new composite property related delinquency variable by first collapsing each original variables into dichotomous variables, o indicates no experience, 1 indicates have at least some experience. Then, I aggregate all these dichotomous variables to create the new composite variables COOOO.
+
+In this composite variable, 0 means have no property-related delinquency at all, 1 means having committed 1 type of property-related delinquency, 2 means having committed 2 types of property-related delinquency, and it goes on. All NAs are retained. 
+
+
+```{r}
+library(dplyr)
+
+# Create Numerical Dichotomous Variables
+ds3$V2285D<-ifelse(ds3$V2285=="(1) NOT @ALL:(1)",0,1)
+ds3$V2286D<-ifelse(ds3$V2286=="(1) NOT @ALL:(1)",0,1)
+ds3$V2287D<-ifelse(ds3$V2287=="(1) NOT @ALL:(1)",0,1)
+ds3$V2288D<-ifelse(ds3$V2288=="(1) NOT @ALL:(1)",0,1)
+ds3$V2289D<-ifelse(ds3$V2289=="(1) NOT @ALL:(1)",0,1)
+ds3$V2290D<-ifelse(ds3$V2290=="(1) NOT @ALL:(1)",0,1)
+ds3$V2291D<-ifelse(ds3$V2291=="(1) NOT @ALL:(1)",0,1)
+ds3$V2292D<-ifelse(ds3$V2292=="(1) NOT @ALL:(1)",0,1)
+ds3$V2293D<-ifelse(ds3$V2293=="(1) NOT @ALL:(1)",0,1)
+
+# Sum these dichotomous
+ds3$C0000 <- ds3$V2285D + ds3$V2286D + ds3$V2287D + ds3$V2288D + ds3$V2289D + ds3$V2290D + ds3$V2291D + ds3$V2292D + ds3$V2293D
+
+# Showing the distribution of the new composite variable
+tab1(ds3$C0000, cum.percent = TRUE)
+```
+
+
+### C0001: Violent Delinquency
+The making of the composite violdent delinquency variable follows the same logic described above in the property-related delinquency. 
+
+```{r}
+# Creating numerical dichotomous variables 
+ds3$V2280D<-ifelse(ds3$V2280=="(1) NOT @ALL:(1)",0,1)
+ds3$V2281D<-ifelse(ds3$V2281=="(1) NOT @ALL:(1)",0,1)
+ds3$V2282D<-ifelse(ds3$V2282=="(1) NOT @ALL:(1)",0,1)
+ds3$V2283D<-ifelse(ds3$V2283=="(1) NOT @ALL:(1)",0,1)
+ds3$V2284D<-ifelse(ds3$V2284=="(1) NOT @ALL:(1)",0,1)
+
+# Sum accross these variables:
+ds3$C0001 <- ds3$V2280D + ds3$V2281D + ds3$V2282D + ds3$V2283D + ds3$V2284D
+
+# Showing the distribution:
+tab1(ds3$C0001, cum.percent = TRUE)
+```
 
 
 
