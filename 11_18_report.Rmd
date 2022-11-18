@@ -285,8 +285,8 @@ On how many occasions (if any) have you used marijuana (grass, pot) or hashish (
 1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
 
 ```{r}
-tab1(core$V2216, cum.percent = TRUE)
-tab1(core$V2216D, cum.percent = TRUE)
+tab1(core$V2116, cum.percent = TRUE)
+tab1(core$V2116D, cum.percent = TRUE)
 tab1(ds2$V1116, cum.percent = TRUE)
 tab1(ds3$V2116, cum.percent = TRUE)
 tab1(ds4$V3116, cum.percent = TRUE)
