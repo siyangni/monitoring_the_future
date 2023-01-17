@@ -211,3 +211,7 @@ tab1(ndelinquency$t0007, cum.percent = TRUE)
 
 Only V2279 has the "power" to alter the distribution from a peak at 1 to a peak at 0, and it would also eliminate most missing data. 
 
+```{r}
+detach(ndelinquency)
+```
+
