@@ -87,8 +87,6 @@ attach(ndelinquency)
 
 ndelinquency$delin_all <- V2279 + V2280 + V2281 + V2282 + V2283 + V2284 + V2285 + V2286 + V2287 + V2288 + V2289 + V2290 + V2291 + V2292 + V2293
 
-detach(ndelinquency)
-
 
 plot1 <- ggplot(ndelinquency, aes(x=delin_all)) + 
   geom_histogram(bins=60) + 
@@ -146,12 +144,16 @@ The making of the composite violdent delinquency variable follows the same logic
 
 ```{r}
 # Creating numerical dichotomous variables 
+
+attach(ndelinquency)
+
 ndelinquency$V2280D<-ifelse(ndelinquency$V2280==1,0,1)
 ndelinquency$V2281D<-ifelse(ndelinquency$V2281==1,0,1)
 ndelinquency$V2282D<-ifelse(ndelinquency$V2282==1,0,1)
 ndelinquency$V2283D<-ifelse(ndelinquency$V2283==1,0,1)
 ndelinquency$V2284D<-ifelse(ndelinquency$V2284==1,0,1)
 
+attach(ndelinquency)
 
 # Sum across these variables:
 ndelinquency$C0001 <- V2280D + V2281D + V2282D + V2283D + V2284D
