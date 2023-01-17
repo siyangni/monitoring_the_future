@@ -219,6 +219,8 @@ tab1(ndelinquency$t0001, cum.percent = TRUE)
 
 Without V2282, group fight:
 
+During the LAST 12 MONTHS, how often have you . . . taken part in a fight where a group of your friends were against another group?
+
 ```{r}
 ndelinquency$t0002 <- V2279D + V2280D + V2281D + V2283D + V2284D + V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
 
