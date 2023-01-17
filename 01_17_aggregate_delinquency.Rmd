@@ -1,0 +1,213 @@
+---
+title: "01_17_aggregate_delinquency"
+author: "Siyang Ni"
+date: "2023-01-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## Aggregate All 
+
+Change factor to numeric first
+```{r}
+
+which(colnames(ds3) == "V2279") 
+which(colnames(ds3) == "V2293")
+
+x <- ds3[c(65:79)]
+
+ndelinquency <- as.data.frame(mapply(as.numeric, x))
+
+```
+
+
+
+```{r}
+
+attach(ndelinquency)
+
+ndelinquency$delin_all <- V2279 + V2280 + V2281 + V2282 + V2283 + V2284 + V2285 + V2286 + V2287 + V2288 + V2289 + V2290 + V2291 + V2292 + V2293
+
+detach(ndelinquency)
+
+
+plot1 <- ggplot(ndelinquency, aes(x=delin_all)) + 
+  geom_histogram(bins=60) + 
+  labs(title="Histogram plot", 
+         subtitle="Distribution of All Types of Delinquency Aggregated",
+         x="Frequency of Delinquency")
+
+plot1
+
+plot2 <- ggplot(ndelinquency, aes(x=delin_all)) + 
+  geom_density(fill = 'blue', alpha=0.8) + 
+    labs(title="Density plot", 
+         subtitle="Distribution of All Types of Delinquency Aggregated",
+         x="Frequency of Delinquency")
+
+plot2
+```
+
+Density plot and histogram shows on a 0 - 75 scale, most data falls within the 0 - 30 range, with two peaks at around 0 and 20. Given data skewness at this level, I recommend dichotomize all delinquency variables.
+
+## Dichotomize and Aggregate
+
+### C0000: Property-related Delinquency
+
+
+```{r}
+library(dplyr)
+
+# Create Numerical Dichotomous Variables
+
+
+ndelinquency$V2285D<-ifelse(ndelinquency$V2285==1,0,1)
+ndelinquency$V2286D<-ifelse(ndelinquency$V2286==1,0,1)
+ndelinquency$V2287D<-ifelse(ndelinquency$V2287==1,0,1)
+ndelinquency$V2288D<-ifelse(ndelinquency$V2288==1,0,1)
+ndelinquency$V2289D<-ifelse(ndelinquency$V2289==1,0,1)
+ndelinquency$V2290D<-ifelse(ndelinquency$V2290==1,0,1)
+ndelinquency$V2291D<-ifelse(ndelinquency$V2291==1,0,1)
+ndelinquency$V2292D<-ifelse(ndelinquency$V2292==1,0,1)
+ndelinquency$V2293D<-ifelse(ndelinquency$V2293==1,0,1)
+
+# Sum these dichotomous
+
+attach(ndelinquency)
+
+ndelinquency$C0000 <- V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+# Showing the distribution of the new composite variable
+tab1(ndelinquency$C0000, cum.percent = TRUE)
+```
+
+
+### C0001: Violent Delinquency
+The making of the composite violdent delinquency variable follows the same logic described above in the property-related delinquency. 
+
+```{r}
+# Creating numerical dichotomous variables 
+ndelinquency$V2280D<-ifelse(ndelinquency$V2280==1,0,1)
+ndelinquency$V2281D<-ifelse(ndelinquency$V2281==1,0,1)
+ndelinquency$V2282D<-ifelse(ndelinquency$V2282==1,0,1)
+ndelinquency$V2283D<-ifelse(ndelinquency$V2283==1,0,1)
+ndelinquency$V2284D<-ifelse(ndelinquency$V2284==1,0,1)
+
+
+# Sum across these variables:
+ndelinquency$C0001 <- V2280D + V2281D + V2282D + V2283D + V2284D
+
+# Showing the distribution:
+tab1(ndelinquency$C0001, cum.percent = TRUE)
+```
+
+### C0002: All Delinquency
+
+```{r}
+# Dichotomize V2279 Fight with Parents
+ndelinquency$V2279D<-ifelse(ndelinquency$V2279==1,0,1)
+
+attach(ndelinquency)
+
+# Sum across All Delinquency variables:
+
+ndelinquency$C0002 <- V2279D + V2280D + V2281D + V2282D + V2283D + V2284D + V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+# Showing the Distribution
+tab1(ndelinquency$C0002, cum.percent = TRUE)
+
+detach (ndelinquency)
+```
+
+## Finding out the "Useful Aggregate"
+
+I experimented with picking out every individual delinquency variable from the aggregate variable, and checked the distribution. The process is almost automatic with R, but showing it here will make this presentation unnecessarily long, so the following section only shows points I found worthy of attention.
+
+First, fighting with parents (V2279) has a significantly higher prevalence level than other variables, it also has lots of missing data. Picking it out would change the overall prevalence level. The peak would change from 1 to 0. 
+```{r}
+attach(ndelinquency)
+
+ndelinquency$t0000 <- V2280D + V2281D + V2282D + V2283D + V2284D + V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0000, cum.percent = TRUE)
+```
+
+The other five variables that are relatively more prevalent are:
+
+V2281: During the LAST 12 MONTHS, how often have you . . . gotten into a serious fight in school or at work?
+
+V2282: During the LAST 12 MONTHS, how often have you . . . taken part in a fight where a group of your friends were against another group?
+
+V2283: During the LAST 12 MONTHS, how often have you . . . hurt someone badly enough to need bandages or a doctor?
+
+V2285: During the LAST 12 MONTHS, how often have you . . . taken something not belonging to you worth under $50?
+
+V2287: During the LAST 12 MONTHS, how often have you . . . taken something from a store without paying for it?
+
+However, picking each one of them out from the aggregate variable won't change the key features of the distribution, as it's shown below:  
+
+Taking each them out of the aggregate variable does not change the features of the overall distribution. 
+
+Without V2281, fighting in school:
+
+```{r}
+ndelinquency$t0001 <- V2279D + V2280D + V2282D + V2283D + V2284D + V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0001, cum.percent = TRUE)
+```
+
+Without V2282, group fight:
+
+```{r}
+ndelinquency$t0002 <- V2279D + V2280D + V2281D + V2283D + V2284D + V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0002, cum.percent = TRUE)
+```
+
+Without V2283, hut someone:
+
+```{r}
+ndelinquency$t0003 <- V2279D + V2280D + V2281D + V2282D + V2284D + V2285D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0003, cum.percent = TRUE)
+```
+
+Without V2285, take something under 50
+
+```{r}
+ndelinquency$t0004 <- V2279D + V2280D + V2281D + V2282D + V2283D + V2284D + V2286D + V2287D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0004, cum.percent = TRUE)
+```
+
+Without V2287, take something from store without paying
+
+```{r}
+ndelinquency$t0005 <- V2279D + V2280D + V2281D + V2282D + V2283D + V2284D + V2285D + V2286D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0005, cum.percent = TRUE)
+```
+
+Next step is to try taking all five variables (V2281, V2282, V2283, V2285, V2287) and see if this would change the distribution:
+
+```{r}
+ndelinquency$t0006 <- V2279D + V2280D + V2284D + V2286D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0006, cum.percent = TRUE)
+```
+
+And if we take all five variables (V2281, V2282, V2283, V2285, V2287) plus V2279 (fighting with parents):
+
+```{r}
+ndelinquency$t0007 <- V2280D + V2284D + V2286D + V2288D + V2289D + V2290D + V2291D + V2292D + V2293D
+
+tab1(ndelinquency$t0007, cum.percent = TRUE)
+```
+
+Only V2279 has the "power" to alter the distribution from a peak at 1 to a peak at 0, and it would also eliminate most missing data. 
+
