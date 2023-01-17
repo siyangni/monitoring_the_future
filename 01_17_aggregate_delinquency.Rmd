@@ -2,14 +2,68 @@
 title: "01_17_aggregate_delinquency"
 author: "Siyang Ni"
 date: "2023-01-17"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
+library(epiDisplay)
 ```
+
+## Note
+
+For every variable, *Column %(NA-)* reports the frequency without any NAs. I also reported the cumulative frequency in column cum.%(NA-). 
+
+I also plotted the frequency for each variable, giving a more intuitive way of digesting the frequency information. All NAs are indicated by the "last" bar of the histogram, unless otherwise indicated. 
+
+
+## Loading datasets
+
+```{r}
+setwd("D:/research/Monitoring-The-Future/mtf_19_12")
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0001/37841-0001-Data.rda")
+core <- da37841.0001
+rm(da37841.0001)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0002/37841-0002-Data.rda")
+ds2 <- da37841.0002
+rm(da37841.0002)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0003/37841-0003-Data.rda")
+ds3 <- da37841.0003
+rm(da37841.0003)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0004/37841-0004-Data.rda")
+ds4 <- da37841.0004
+rm(da37841.0004)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0005/37841-0005-Data.rda")
+ds5 <- da37841.0005
+rm(da37841.0005)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0006/37841-0006-Data.rda")
+ds6 <- da37841.0006
+rm(da37841.0006)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0007/37841-0007-Data.rda")
+ds7 <- da37841.0007
+rm(da37841.0007)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0008/37841-0008-Data.rda")
+ds8 <- da37841.0008
+rm(da37841.0008)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0009/37841-0009-Data.rda")
+ds9 <- da37841.0009
+rm(da37841.0009)
+
+```
+
 
 ## Aggregate All 
 
