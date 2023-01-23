@@ -1,7 +1,7 @@
 ---
-title: "01_17_aggregate_delinquency"
+title: "01_23_aggregate_delinquency"
 author: "Siyang Ni"
-date: "2023-01-17"
+date: "2023-01-23"
 output:
   pdf_document: default
   html_document: default
@@ -13,6 +13,38 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(epiDisplay)
 ```
+
+
+## Variable Specifications:
+
+V2281: During the LAST 12 MONTHS, how often have you . . . gotten into a serious fight in school or at work?
+
+V2282: During the LAST 12 MONTHS, how often have you . . . taken part in a fight where a group of your friends were against another group?
+
+V2283: During the LAST 12 MONTHS, how often have you . . . hurt someone badly enough to need bandages or a doctor?
+
+V2284: During the LAST 12 MONTHS, how often have you . . . used a knife or gun or some other thing (like a club) to get something from a person?
+
+V2285: During the LAST 12 MONTHS, how often have you . . . taken something not belonging to you worth under $50?
+
+V2286: During the LAST 12 MONTHS, how often have you . . . taken something not belonging to you worth over $50?
+
+V2287: During the LAST 12 MONTHS, how often have you . . . taken something from a store without paying for it?
+
+V2288: During the LAST 12 MONTHS, how often have you . . . taken a car that didn't belong to someone in your family without permission of the owner?
+
+V2289: During the LAST 12 MONTHS, how often have you . . . taken part of a car without permission of the owner?
+
+V2290:During the LAST 12 MONTHS, how often have you . . . gone into some house or building when you weren't supposed to be there?
+
+V2291: During the LAST 12 MONTHS, how often have you . . . set fire to someone's property on purpose?
+
+V2292: During the LAST 12 MONTHS, how often have you . . . damaged school property on purpose?
+
+V2293: During the LAST 12 MONTHS, how often have you . . . damaged property at work on purpose?
+
+
+
 
 ## Note
 
