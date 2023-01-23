@@ -1,0 +1,306 @@
+---
+title: "01_23_report2"
+author: "Siyang Ni"
+date: "2023-01-23"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Variables Addressed
+
+All of them are in DS3 sub dataset, where all delinquency variables are:
+
+V2105: On how many occasions (if any) have you had alcoholic beverages to drink--more than just a few sips . . . during the last 12 months?
+
+V2116: On how many occasions (if any) have you used marijuana (grass, pot) or hashish (hash, hash oil) . . . during the last 12 months?
+
+V2119: On how many occasions (if any) have you used LSD ("acid") . . . during the last 12 months?
+
+V2125: On how many occasions (if any) have you taken cocaine (sometimes called "coke", "crack", "rock") . . . during last 12 months?
+
+V2128: On how many occasions (if any) have you taken amphetamines on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+V2134: On how many occasions (if any) have you taken sedatives on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+V2137: On how many occasions (if any) have you taken tranquilizers on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+V2140: On how many occasions (if any) have you taken heroin . . . during the last 12 months?
+
+V2143: On how many occasions (if any) have you taken narcotics other than heroin on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+V2146: On how many occasions (if any) have you sniffed glue, or breathed the contents of aerosol spray cans, or inhaled any other gases or sprays in order to get high . . . during the last 12 months?
+
+V2581: On how many DAYS (if any) have you vaped NICOTINE . . . during the last 12 months?
+
+
+
+## Note
+
+For every variable, *Column %(NA-)* reports the frequency without any NAs. I also reported the cumulative frequency in column cum.%(NA-). 
+
+I also plotted the frequency for each variable, giving a more intuitive way of digesting the frequency information. All NAs are indicated by the "last" bar of the histogram, unless otherwise indicated. 
+
+## Loading datasets
+
+```{r}
+setwd("D:/research/Monitoring-The-Future/mtf_19_12")
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0001/37841-0001-Data.rda")
+core <- da37841.0001
+rm(da37841.0001)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0002/37841-0002-Data.rda")
+ds2 <- da37841.0002
+rm(da37841.0002)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0003/37841-0003-Data.rda")
+ds3 <- da37841.0003
+rm(da37841.0003)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0004/37841-0004-Data.rda")
+ds4 <- da37841.0004
+rm(da37841.0004)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0005/37841-0005-Data.rda")
+ds5 <- da37841.0005
+rm(da37841.0005)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0006/37841-0006-Data.rda")
+ds6 <- da37841.0006
+rm(da37841.0006)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0007/37841-0007-Data.rda")
+ds7 <- da37841.0007
+rm(da37841.0007)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0008/37841-0008-Data.rda")
+ds8 <- da37841.0008
+rm(da37841.0008)
+
+load("D:/research/Monitoring-The-Future/mtf_19_12/DS0009/37841-0009-Data.rda")
+ds9 <- da37841.0009
+rm(da37841.0009)
+
+```
+
+## Load relevant packages
+
+```{r}
+library(epiDisplay)
+library(tidyverse)
+```
+
+## Display Individual Variable Frequency and Distribution
+
+
+### 00820:#X DRNK/LAST12MO
+
+On how many occasions (if any) have you had alcoholic beverages to drink--more than just a few sips . . . during the last 12 months?
+
+1="0 Occasions"  2="1-2 Occasions"   3="3-5 Occasions"  4="6-9 Occasions"  5="10-19 Occasions"  6="20-39 Occasions"  7="40 or More"
+
+```{r}
+tab1(ds3$V2105, cum.percent = TRUE)
+```
+
+### 00860:#XMJ+HS/LAST12MO
+
+On how many occasions (if any) have you used marijuana (grass, pot) or hashish (hash, hash oil) . . . during the last 12 months?
+
+[For form 1, item is recoded from separate marijuana and hashish questions, and "Dope" is given as another example of what marijuana is called.]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2116, cum.percent = TRUE)
+```
+
+### 00900:#X LSD/LAST 12MO
+
+On how many occasions (if any) have you used LSD ("acid") . . . during the last 12 months?
+
+[Worded slightly differently in form 1; see form 1 codebook.]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2119, cum.percent = TRUE)
+```
+
+### 00960:#X COKE/LAST12MO
+
+On how many occasions (if any) have you taken cocaine (sometimes called "coke", "crack", "rock") . . . during last 12 months?
+
+[For questionnaire forms 1, 3, 4, and 6, item is recoded from separate questions about "crack" (items 22260-22280) and other forms of cocaine (items 22320-22340).]
+
+```{r}
+tab1(ds3$V2125, cum.percent = TRUE)
+```
+
+### 00990:#X AMPH/LAST12MO
+
+{Amphetamines are sometimes prescribed by doctors for people who have trouble paying attention, are hyperactive, have ADHD, or have trouble staying awake. They are sometimes called uppers, ups, pep pills, and include drugs like Adderall and Ritalin. Drugstores are not supposed to sell them without a prescription from a doctor. Amphetamines
+
+do NOT include any nonprescription drugs, such as over-the-counter diet pills or stay-awake pills.
+
+[Questionnaire form 1 worded somewhat differently and also includes as examples: Benzedrine, Dexedrine, Methedrine, Ritalin, Adderall, Concerta, Methamphetamine, Meth or Crystal Meth (see form 1 codebook).]}
+
+[All forms]: On how many occasions (if any) have you taken amphetamines on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2128, cum.percent = TRUE)
+```
+
+### 01050:#X SED/BARB/LAST12MO
+
+{Sedatives, including barbiturates, are sometimes prescribed by doctors to help people relax or get to sleep. They are sometimes called downs or downers, and include phenobarbital, Tuinal, Nembutal, and Seconal.} On how many occasions (if any) have you taken sedatives on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+[Worded slightly differently in questionnaire form 1, and replaced Nembutal with Ambien, Lunesta, and Sonata as examples; see form 1 codebook.]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2134, cum.percent = TRUE)
+```
+
+### 01080:#X TRQL/LAST12MO
+
+{Tranquilizers are sometimes prescribed by doctors to calm people down, quiet their nerves, or relax their muscles. Librium, Valium, and Xanax are all tranquilizers.} On how many occasions (if any) have you taken tranquilizers on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+[Questionnaire form 1 worded somewhat differently and adds Soma, Serax, Ativan, Klonopin to the examples (see form 1 codebook).]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2137, cum.percent = TRUE)
+```
+
+### 01110:#X 'H'/LAST 12MO
+
+On how many occasions (if any) have you taken heroin . . . during the last 12 months?
+
+[For questionnaire forms 2, 5, and 6, item is recoded from separate questions about heroin use with a needle (items 29630-29650) and without a needle (items 29660-29680).]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2140, cum.percent = TRUE)
+```
+
+### 01140:#X NARC/LAST12MO
+
+{There are a number of narcotics other than heroin, such as methadone, opium, morphine, codeine, Demerol, Vicodin, OxyContin, and Percocet. These are sometimes prescribed by doctors.} On how many occasions (if any) have you taken narcotics other than heroin on your own--that is, without a doctor telling you to take them . . . during the last 12 months?
+
+[Questionnaire form 1 worded somewhat differently and adds "Percodan, Ultram" (see form 1 Codebook).]
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+
+```{r}
+tab1(ds3$V2143, cum.percent = TRUE)
+```
+
+### 00170:#X INHL/LAST12MO
+On how many occasions (if any) have you sniffed glue, or breathed the contents of aerosol spray cans, or inhaled any other gases or sprays in order to get high . . . during the last 12 months?
+
+1="0 Occasions" 2="1-2 Occasions" 3="3-5 Occasions" 4="6-9 Occasions" 5="10-19 Occasions" 6="20-39 Occasions" 7="40 or More"
+
+```{r}
+tab1(ds3$V2146, cum.percent = TRUE)
+```
+
+
+### 35150:#DAYS VAPE NIC/12MO
+
+On how many DAYS (if any) have you vaped NICOTINE . . . during the last 12 months?
+
+1="0 Days" 2="1-2 Days" 3="3-5 Days" 4="6-9 Days" 5="10-19 Days" 6="20 or More"
+
+```{r}
+tab1(ds3$V2581, cum.percent = TRUE)
+```
+
+### V2584: 35180:#DAYS VAPE MJ/12MO
+
+On how many DAYS (if any) have you vaped MARIJUANA . . . during the last 12 months?
+
+1="0 Days" 2="1-2 Days" 3="3-5 Days" 4="6-9 Days" 5="10-19 Days
+
+```{r}
+tab1(ds3$V2584, cum.percent = TRUE)
+```
+
+
+## Aggregating them Together
+
+# Composite Variable Report
+
+### S0000: Property-related Delinquency
+
+Because all original variables were coded as categorical, and they are all heavily right-skewed, I create the new composite property related delinquency variable by first collapsing each original variables into dichotomous variables, o indicates no experience, 1 indicates have at least some experience. Then, I aggregate all these dichotomous variables to create the new composite variables S0000.
+
+In this composite variable, 0 means have no substance use at all, 1 means having 1 type of substance use history, 2 means having 2 types of substance use history, and it goes on. All NAs are retained. 
+
+
+```{r}
+library(dplyr)
+
+# Create Numerical Dichotomous Variables
+ds3$V2105D<-ifelse(ds3$V2105=="(1) O OCCAS:(1)",0,1)
+ds3$V2116D<-ifelse(ds3$V2116=="(1) O OCCAS:(1)",0,1)
+ds3$V2119D<-ifelse(ds3$V2119=="(1) O OCCAS:(1)",0,1)
+ds3$V2125D<-ifelse(ds3$V2125=="(1) O OCCAS:(1)",0,1)
+ds3$V2128D<-ifelse(ds3$V2128=="(1) O OCCAS:(1)",0,1)
+ds3$V2134D<-ifelse(ds3$V2134=="(1) O OCCAS:(1)",0,1)
+ds3$V2137D<-ifelse(ds3$V2137=="(1) O OCCAS:(1)",0,1)
+ds3$V2140D<-ifelse(ds3$V2140=="(1) O OCCAS:(1)",0,1)
+ds3$V2143D<-ifelse(ds3$V2143=="(1) O OCCAS:(1)",0,1)
+ds3$V2146D<-ifelse(ds3$V2146=="(1) O OCCAS:(1)",0,1)
+ds3$V2581D<-ifelse(ds3$V2581=="(1) 0 DAYS:(1)",0,1)
+
+
+
+# Sum these dichotomous
+ds3$S0000 <- ds3$V2105D + ds3$V2116D + ds3$V2119D + ds3$V2125D + ds3$V2128D + ds3$V2134D + ds3$V2137D + ds3$V2140D + ds3$V2143D + ds3$V2146D + ds3$V2581D
+
+# Showing the distribution of the new composite variable
+tab1(ds3$S0000, cum.percent = TRUE)
+```
+
+From the previous analysis, we see only two types of drug use have relatively high prevalence, which is V2105 Marijuana use, and V2581 Vaping. 
+
+Let's take each of them out of our composite variable SOOOO.
+
+First, let's take out V2105 Marijuana use, creating the composite S0001
+
+```{r}
+ds3$S0001 <- ds3$V2116D + ds3$V2119D + ds3$V2125D + ds3$V2128D + ds3$V2134D + ds3$V2137D + ds3$V2140D + ds3$V2143D + ds3$V2146D + ds3$V2581D
+
+# Showing the distribution of the new composite variable
+tab1(ds3$S0001, cum.percent = TRUE)
+```
+
+Then, let's take out V2581 Vaping, creating the composite S0002
+
+```{r}
+ds3$S0002 <- ds3$V2105D + ds3$V2116D + ds3$V2119D + ds3$V2125D + ds3$V2128D + ds3$V2134D + ds3$V2137D + ds3$V2140D + ds3$V2143D + ds3$V2146D
+
+# Showing the distribution of the new composite variable
+tab1(ds3$S0002, cum.percent = TRUE)
+```
+
+Finally, Let's take out both V2105 and V2581, and make the composite variable S0003:
+
+```{r}
+ds3$S0003 <- ds3$V2116D + ds3$V2119D + ds3$V2125D + ds3$V2128D + ds3$V2134D + ds3$V2137D + ds3$V2140D + ds3$V2143D + ds3$V2146D
+
+# Showing the distribution of the new composite variable
+tab1(ds3$S0003, cum.percent = TRUE)
+```
+
+
+
+

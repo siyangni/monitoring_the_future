@@ -523,7 +523,7 @@ tab1(ds3$C0000, cum.percent = TRUE)
 
 
 ### C0001: Violent Delinquency
-The making of the composite violdent delinquency variable follows the same logic described above in the property-related delinquency. 
+The making of the composite violent delinquency variable follows the same logic described above in the property-related delinquency. 
 
 ```{r}
 # Creating numerical dichotomous variables 
